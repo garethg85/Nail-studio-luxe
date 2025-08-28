@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💎 NAIL STUDIO LUXE 💎</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #000;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 0, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 50%);
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .luxury-header {
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 50%, #000 100%);
+            border: 2px solid #ffd700;
+            border-bottom: 4px solid #ffd700;
+            box-shadow: 
+                0 0 20px rgba(255, 215, 0, 0.5),
+                inset 0 1px 0 rgba(255, 215, 0, 0.3);
+            text-align: center;
+            padding: 0.8rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .luxury-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .app-title {
+            font-size: clamp(1.4rem, 4vw, 2rem);
+            font-weight: 900;
+            background: linear-gradient(45deg, #ffd700, #ffed4e, #ffd700, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+            letter-spacing: 2px;
+            margin-bottom: 0.2rem;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: brightness(1) drop-shadow(0 0 10px rgba(255, 215, 0, 0.8)); }
+            to { filter: brightness(1.2) drop-shadow(0 0 20px rgba(255, 215, 0, 1)); }
+        }
+
+        .app-subtitle {
+            font-size: 0.8rem;
+            color: #ffd700;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .main-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            max-width: 100%;
+            margin: 0;
+            padding: 0.5rem;
+            gap: 0.5rem;
+            height: calc(100vh - 90px);
+        }
+
+        @media (min-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr 320px;
+                max-width: 1200px;
+                margin: 0 auto;
+                gap: 1rem;
+                padding: 1rem;
+            }
+        }
+
+        .hand-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #000 50%, #1a1a1a 100%);
+            border: 3px solid;
+            border-image: linear-gradient(45deg, #ffd700, #ff6b6b, #00ffff, #ffd700) 1;
+            border-radius: 16px;
+            padding: 0.8rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 0 30px rgba(255, 215, 0, 0.3),
+                inset 0 1px 0 rgba(255, 215, 0, 0.2);
+            height: fit-content;
+        }
+
+        .hand-section::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ffd700, #ff6b6b, #00ffff, #ffd700);
+            border-radius: 16px;
+            z-index: -1;
+            animation: borderGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        .hand-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 170px;
+            position: relative;
+            background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.1), transparent);
+            border-radius: 12px;
+            overflow: visible;
+        }
+
+        .hand-svg {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4));
+            transition: all 0.3s ease;
+        }
+
+        .hand-svg:hover {
+            filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.6));
+        }
+
+        .nail {
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.6));
+            stroke-width: 2;
+        }
+
+        .nail:hover {
+            transform: scale(1.15);
+            filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.9));
+        }
+
+        .nail.selected {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 18px rgba(255, 107, 107, 0.8));
+            animation: nailPulse 1.5s infinite;
+        }
+
+        @keyframes nailPulse {
+            0%, 100% { 
+                filter: drop-shadow(0 0 18px rgba(255, 107, 107, 0.8));
+                transform: scale(1.2);
+            }
+            50% { 
+                filter: drop-shadow(0 0 25px rgba(255, 107, 107, 1));
+                transform: scale(1.25);
+            }
+        }
+
+        .controls-panel {
+            background: linear-gradient(135deg, #1a1a1a 0%, #000 50%, #1a1a1a 100%);
+            border: 3px solid;
+            border-image: linear-gradient(45deg, #ffd700, #ff6b6b, #00ffff, #ffd700) 1;
+            border-radius: 16px;
+            padding: 0.8rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 0 30px rgba(255, 215, 0, 0.3),
+                inset 0 1px 0 rgba(255, 215, 0, 0.2);
+            max-height: calc(100vh - 150px);
+            overflow-y: auto;
+        }
+
+        .controls-panel::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ffd700, #ff6b6b, #00ffff, #ffd700);
+            border-radius: 16px;
+            z-index: -1;
+            animation: borderGlow 3s ease-in-out infinite reverse;
+        }
+
+        .section-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .selected-info {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 107, 107, 0.2));
+            border: 1px solid rgba(255, 215, 0, 0.5);
+            border-radius: 8px;
+            padding: 0.7rem;
+            margin-bottom: 0.8rem;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+        }
+
+        .selected-info h4 {
+            color: #ffd700;
+            margin-bottom: 0.3rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .selected-info p {
+            color: #fff;
+            font-size: 0.75rem;
+            opacity: 0.9;
+        }
+
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(38px, 1fr));
+            gap: 6px;
+            margin-bottom: 1rem;
+        }
+
+        .color-swatch {
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .color-swatch::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 20%;
+            width: 16px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+
+        .color-swatch:hover {
+            transform: scale(1.1);
+            border-color: #ffd700;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+        }
+
+        .color-swatch.selected {
+            transform: scale(1.15);
+            border-color: #ff6b6b;
+            box-shadow: 
+                0 0 0 2px rgba(255, 107, 107, 0.5),
+                0 0 20px rgba(255, 107, 107, 0.7);
+            animation: selectedGlow 2s infinite;
+        }
+
+        @keyframes selectedGlow {
+            0%, 100% { box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.5), 0 0 20px rgba(255, 107, 107, 0.7); }
+            50% { box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.8), 0 0 30px rgba(255, 107, 107, 1); }
+        }
+
+        .stickers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(42px, 1fr));
+            gap: 6px;
+            margin-bottom: 1rem;
+        }
+
+        .sticker-item {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(0, 255, 255, 0.2));
+            border: 2px solid rgba(255, 215, 0, 0.4);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sticker-item:hover {
+            transform: scale(1.1);
+            border-color: #00ffff;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+        }
+
+        .sticker-item.selected {
+            transform: scale(1.15);
+            border-color: #ff6b6b;
+            box-shadow: 
+                0 0 0 2px rgba(255, 107, 107, 0.5),
+                0 0 20px rgba(255, 107, 107, 0.7);
+            animation: selectedGlow 2s infinite;
+        }
+
+        .action-buttons {
+            display: grid;
+            gap: 6px;
+        }
+
+        .btn {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #ffd700, #ff6b6b);
+            color: #000;
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            box-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.6);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(45deg, #ff6b6b, #00ffff);
+            color: #000;
+            border: 2px solid rgba(255, 107, 107, 0.5);
+            box-shadow: 0 0 12px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(255, 107, 107, 0.6);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #ffd700;
+            border: 2px solid #ffd700;
+            box-shadow: 0 0 12px rgba(255, 215, 0, 0.2);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 215, 0, 0.2);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+            transform: translateY(-1px);
+        }
+
+        /* Custom Scrollbar */
+        .controls-panel::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .controls-panel::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 4px;
+        }
+
+        .controls-panel::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #ffd700, #ff6b6b);
+            border-radius: 4px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 767px) {
+            .main-container {
+                height: auto;
+                min-height: calc(100vh - 80px);
+            }
+            
+            .hand-container {
+                height: 150px;
+            }
+            
+            .controls-panel {
+                max-height: none;
+            }
+            
+            .color-grid {
+                grid-template-columns: repeat(auto-fill, minmax(35px, 1fr));
+                gap: 5px;
+            }
+            
+            .color-swatch {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .stickers-grid {
+                grid-template-columns: repeat(auto-fill, minmax(38px, 1fr));
+                gap: 5px;
+            }
+            
+            .sticker-item {
+                width: 38px;
+                height: 38px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="luxury-header">
+        <h1 class="app-title">💎 NAIL STUDIO LUXE 💎</h1>
+        <p class="app-subtitle">Professional Nail Art Designer</p>
+    </div>
+
+    <div class="main-container">
+        <div class="hand-section">
+            <div class="hand-container">
+                  <svg class="hand-svg" viewBox="0 0 300 130" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="handGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#f4d4ae;stop-opacity:1" />
+            <stop offset="30%" style="stop-color:#e8c4a0;stop-opacity:1" />
+            <stop offset="70%" style="stop-color:#deb887;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#d2a373;stop-opacity:1" />
+        </linearGradient>
+        <filter id="fingerShadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="rgba(0,0,0,0.3)"/>
+        </filter>
+        <filter id="nailShadow" x="-50%" y="-50%" width="200%" height="200%">
+            <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="rgba(255,215,0,0.6)"/>
+        </filter>
+        <linearGradient id="nailBase" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#ffeaa7;stop-opacity:1" />
+            <stop offset="50%" style="stop-color:#fab1a0;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#e17055;stop-opacity:1" />
+        </linearGradient>
+        <radialGradient id="knuckleGradient" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" style="stop-color:#deb887;stop-opacity:0.8" />
+            <stop offset="100%" style="stop-color:#d2a373;stop-opacity:0.3" />
+        </radialGradient>
+    </defs>
+
+    <!-- Palm (trimmed and shifted upward) -->
+    <path d="M80 100 
+             C70 105, 65 115, 70 125
+             L85 130
+             C95 132, 105 130, 115 128
+             L130 125
+             C140 123, 150 123, 160 125
+             L175 128
+             C185 130, 195 132, 205 130
+             L220 125
+             C225 115, 220 105, 210 100
+             L190 90
+             C180 85, 170 85, 160 90
+             L150 95
+             C140 85, 130 85, 120 90
+             L100 95
+             C90 90, 85 95, 80 100
+             Z" 
+          fill="url(#handGradient)" 
+          stroke="#d4af37" 
+          stroke-width="1" 
+          filter="url(#fingerShadow)"/>
+
+    <!-- Thumb -->
+    <path d="M70 125
+             C65 120, 60 110, 62 100
+             C64 90, 70 85, 78 88
+             C86 91, 90 100, 88 110
+             C86 120, 80 128, 75 130
+             C72 131, 70 128, 70 125
+             Z" 
+          fill="url(#handGradient)" 
+          stroke="#d4af37" 
+          stroke-width="1" 
+          filter="url(#fingerShadow)"/>
+
+    <!-- Index finger -->
+    <path d="M110 95
+             C108 90, 108 80, 110 70
+             C112 60, 115 50, 118 40
+             C120 30, 122 20, 125 15
+             C127 10, 130 8, 133 10
+             C136 12, 138 17, 136 22
+             C134 27, 132 32, 130 37
+             C128 42, 127 47, 126 52
+             C125 57, 124 62, 123 67
+             C122 72, 121 77, 120 82
+             C119 87, 115 92, 110 95
+             Z" 
+          fill="url(#handGradient)" 
+          stroke="#d4af37" 
+          stroke-width="1" 
+          filter="url(#fingerShadow)"/>
+
+    <!-- Middle finger -->
+    <path d="M140 95
+             C138 90, 138 80, 140 70
+             C142 60, 145 50, 148 40
+             C150 30, 152 20, 155 10
+             C157 0, 159 -5, 162 -2
+             C165 1, 167 6, 165 11
+             C163 16, 161 21, 159 26
+             C157 31, 156 36, 155 41
+             C154 46, 153 51, 152 56
+             C151 61, 150 66, 149 71
+             C148 76, 147 81, 146 86
+             C145 91, 142 93, 140 95
+             Z" 
+          fill="url(#handGradient)" 
+          stroke="#d4af37" 
+          stroke-width="1" 
+          filter="url(#fingerShadow)"/>
+
+    <!-- Ring finger -->
+    <path d="M170 95
+             C168 90, 168 80, 170 70
+             C172 60, 175 50, 178 40
+             C180 30, 182 20, 185 15
+             C187 10, 190 8, 193 10
+             C196 12, 198 17, 196 22
+             C194 27, 192 32, 190 37
+             C188 42, 187 47, 186 52
+             C185 57, 184 62, 183 67
+             C182 72, 181 77, 180 82
+             C179 87, 175 92, 170 95
+             Z" 
+          fill="url(#handGradient)" 
+          stroke="#d4af37" 
+          stroke-width="1" 
+          filter="url(#fingerShadow)"/>
+
+    <!-- Pinky finger -->
+    <path d="M200 95
+             C198 92, 198 85, 200 75
+             C202 65, 205 55, 208 45
+             C210 35, 212 25, 215 20
+             C217 15, 220 13, 223 15
+             C226 17, 228 22, 226 27
+             C224 32, 222 37, 220 42
+             C218 47, 217 52, 216 57
+             C215 62, 214 67, 213 72
+             C212 77, 211 82, 210 87
+             C209 90, 205 93, 200 95
+             Z" 
+          fill="url(#handGradient)" 
+          stroke="#d4af37" 
+          stroke-width="1" 
+          filter="url(#fingerShadow)"/>
+
+    <!-- Knuckle details -->
+    <circle cx="125" cy="30" r="3" fill="url(#knuckleGradient)"/>
+    <circle cx="155" cy="25" r="3" fill="url(#knuckleGradient)"/>
+    <circle cx="185" cy="30" r="3" fill="url(#knuckleGradient)"/>
+    <circle cx="215" cy="35" r="2.5" fill="url(#knuckleGradient)"/>
+    <circle cx="120" cy="55" r="2" fill="url(#knuckleGradient)"/>
+    <circle cx="150" cy="50" r="2" fill="url(#knuckleGradient)"/>
+    <circle cx="180" cy="55" r="2" fill="url(#knuckleGradient)"/>
+    <circle cx="210" cy="60" r="1.5" fill="url(#knuckleGradient)"/>
+
+    <!-- Nails -->
+    <ellipse class="nail" id="nail1" cx="78" cy="88" rx="6" ry="10" fill="url(#nailBase)" stroke="#ffd700" stroke-width="2" filter="url(#nailShadow)" transform="rotate(-15 78 88)"/>
+    <ellipse class="nail" id="nail2" cx="129" cy="32" rx="7" ry="12" fill="url(#nailBase)" stroke="#ffd700" stroke-width="2" filter="url(#nailShadow)"/>
+    <ellipse class="nail" id="nail3" cx="159" cy="20" rx="8" ry="14" fill="url(#nailBase)" stroke="#ffd700" stroke-width="2" filter="url(#nailShadow)"/>
+    <ellipse class="nail" id="nail4" cx="189" cy="32" rx="7" ry="12" fill="url(#nailBase)" stroke="#ffd700" stroke-width="2" filter="url(#nailShadow)"/>
+    <ellipse class="nail" id="nail5" cx="219" cy="37" rx="6" ry="10" fill="url(#nailBase)" stroke="#ffd700" stroke-width="2" filter="url(#nailShadow)"/>
+                </svg>
+            </div>
+        </div>
+
+        <div class="controls-panel">
+            <div class="selected-info" id="selectedInfo" style="display: none;">
+                <h4>SELECTED NAIL</h4>
+                <p id="selectedText">Click on a nail to select it</p>
+            </div>
+
+            <div class="section-title">
+                💅 PREMIUM COLORS
+            </div>
+            <div class="color-grid" id="colorGrid">
+                <!-- Colors will be generated by JavaScript -->
+            </div>
+
+            <div class="section-title">
+                ✨ LUXURY DESIGNS
+            </div>
+            <div class="stickers-grid" id="stickersGrid">
+                <!-- Stickers will be generated by JavaScript -->
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="clearCurrentNail()">CLEAR NAIL</button>
+                <button class="btn btn-secondary" onclick="clearAllNails()">RESET ALL</button>
+                <button class="btn btn-outline" onclick="saveDesign()">SAVE DESIGN</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedNail = null;
+        let selectedColor = null;
+        let selectedSticker = null;
+        let originalNailColors = {};
+
+        // Ultra-premium color palette
+        const colors = [
+            { name: 'Ruby Red', value: '#dc143c', gradient: 'linear-gradient(135deg, #dc143c, #8b0000)' },
+            { name: 'Royal Pink', value: '#ff1493', gradient: 'linear-gradient(135deg, #ff1493, #c71585)' },
+            { name: 'Amethyst Purple', value: '#9370db', gradient: 'linear-gradient(135deg, #9370db, #4b0082)' },
+            { name: 'Sapphire Blue', value: '#0047ab', gradient: 'linear-gradient(135deg, #0047ab, #002fa7)' },
+            { name: 'Emerald Green', value: '#50c878', gradient: 'linear-gradient(135deg, #50c878, #228b22)' },
+            { name: 'Sunset Orange', value: '#ff4500', gradient: 'linear-gradient(135deg, #ff4500, #ff6347)' },
+            { name: '24K Gold', value: '#ffd700', gradient: 'linear-gradient(135deg, #ffd700, #ffed4e, #ffd700)' },
+            { name: 'Platinum Silver', value: '#c0c0c0', gradient: 'linear-gradient(135deg, #c0c0c0, #e8e8e8, #c0c0c0)' },
+            { name: 'Diamond White', value: '#f8f8ff', gradient: 'linear-gradient(135deg, #f8f8ff, #ffffff, #f0f8ff)' },
+            { name: 'Rose Gold', value: '#e8b4b8', gradient: 'linear-gradient(135deg, #e8b4b8, #d4af37)' },
+            { name: 'Neon Pink', value: '#ff073a', gradient: 'linear-gradient(45deg, #ff073a, #ff69b4, #ff073a)' },
+            { name: 'Electric Blue', value: '#00bfff', gradient: 'linear-gradient(45deg, #00bfff, #87ceeb, #00bfff)' },
+            { name: 'Holographic', value: '#ff6b6b', gradient: 'linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ff6b6b)' },
+            { name: 'Galaxy Black', value: '#0d0d0d', gradient: 'linear-gradient(135deg, #0d0d0d, #2f2f2f, #0d0d0d)' },
+            { name: 'Champagne', value: '#f7e7ce', gradient: 'linear-gradient(135deg, #f7e7ce, #daa520)' }
+        ];
+
+        // Premium stickers
+        const stickers = [
+            { name: 'Diamond', emoji: '💎', pattern: 'diamond' },
+            { name: 'Crown', emoji: '👑', pattern: 'crown' },
+            { name: 'Star', emoji: '⭐', pattern: 'star' },
+            { name: 'Heart', emoji: '💖', pattern: 'heart' },
+            { name: 'Rose', emoji: '🌹', pattern: 'rose' },
+            { name: 'Butterfly', emoji: '🦋', pattern: 'butterfly' },
+            { name: 'Lightning', emoji: '⚡', pattern: 'lightning' },
+            { name: 'Fire', emoji: '🔥', pattern: 'fire' },
+            { name: 'Sparkles', emoji: '✨', pattern: 'sparkles' },
+            { name: 'Gem', emoji: '💠', pattern: 'gem' }
+        ];
+
+        function initializeApp() {
+            createColorPalette();
+            createStickers();
+            setupNailSelection();
+            
+            // Store original nail colors
+            document.querySelectorAll('.nail').forEach((nail, index) => {
+                originalNailColors[nail.id] = nail.getAttribute('fill');
+            });
+        }
+
+        function createColorPalette() {
+            const colorGrid = document.getElementById('colorGrid');
+            colors.forEach((color, index) => {
+                const swatch = document.createElement('div');
+                swatch.className = 'color-swatch';
+                swatch.style.background = color.gradient;
+                swatch.title = color.name;
+                swatch.onclick = () => selectColor(color, swatch);
+                colorGrid.appendChild(swatch);
+            });
+        }
+
+        function createStickers() {
+            const stickersGrid = document.getElementById('stickersGrid');
+            stickers.forEach((sticker, index) => {
+                const item = document.createElement('div');
+                item.className = 'sticker-item';
+                item.innerHTML = sticker.emoji;
+                item.title = sticker.name;
+                item.onclick = () => selectSticker(sticker, item);
+                stickersGrid.appendChild(item);
+            });
+        }
+
+        function setupNailSelection() {
+            const nailNames = ['Thumb', 'Index', 'Middle', 'Ring', 'Pinky'];
+            document.querySelectorAll('.nail').forEach((nail, index) => {
+                nail.onclick = () => selectNail(nail, nailNames[index]);
+            });
+        }
+
+        function selectNail(nail, nailName) {
+            // Remove previous selection
+            document.querySelectorAll('.nail').forEach(n => n.classList.remove('selected'));
+            
+            // Select new nail
+            nail.classList.add('selected');
+            selectedNail = nail;
+            
+            // Update info panel
+            const selectedInfo = document.getElementById('selectedInfo');
+            const selectedText = document.getElementById('selectedText');
+            selectedInfo.style.display = 'block';
+            selectedText.textContent = `${nailName} finger selected - Choose a color or design!`;
+            
+            // Create neon effect
+            createNeonEffect(nail);
+        }
+
+        function selectColor(color, element) {
+            // Remove previous selection
+            document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('selected'));
+            document.querySelectorAll('.sticker-item').forEach(s => s.classList.remove('selected'));
+            
+            // Select new color
+            element.classList.add('selected');
+            selectedColor = color;
+            selectedSticker = null;
+            
+            // Apply to selected nail
+            if (selectedNail) {
+                applyColorToNail(selectedNail, color);
+                createSparkleEffect(selectedNail);
+            }
+        }
+
+        function selectSticker(sticker, element) {
+            // Remove previous selection
+            document.querySelectorAll('.sticker-item').forEach(s => s.classList.remove('selected'));
+            document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('selected'));
+            
+            // Select new sticker
+            element.classList.add('selected');
+            selectedSticker = sticker;
+            selectedColor = null;
+            
+            // Apply to selected nail
+            if (selectedNail) {
+                applyPatternToNail(selectedNail, sticker);
+                createSparkleEffect(selectedNail);
+            }
+        }
+
+        function applyColorToNail(nail, color) {
+            // Create premium gradient fill
+            const defs = document.querySelector('defs');
+            const gradientId = `gradient_${nail.id}`;
+            
+            // Remove existing gradient if any
+            const existingGradient = document.getElementById(gradientId);
+            if (existingGradient) {
+                existingGradient.remove();
+            }
+            
+            // Create new luxury gradient
+            const gradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
+            gradient.id = gradientId;
+            gradient.setAttribute("x1", "0%");
+            gradient.setAttribute("y1", "0%");
+            gradient.setAttribute("x2", "0%");
+            gradient.setAttribute("y2", "100%");
+            
+            // Create multi-stop gradient for premium look
+            const stop1 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+            stop1.setAttribute("offset", "0%");
+            stop1.setAttribute("stop-color", lightenColor(color.value, 20));
+            stop1.setAttribute("stop-opacity", "1");
+            
+            const stop2 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+            stop2.setAttribute("offset", "50%");
+            stop2.setAttribute("stop-color", color.value);
+            stop2.setAttribute("stop-opacity", "1");
+            
+            const stop3 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+            stop3.setAttribute("offset", "100%");
+            stop3.setAttribute("stop-color", darkenColor(color.value, 30));
+            stop3.setAttribute("stop-opacity", "1");
+            
+            gradient.appendChild(stop1);
+            gradient.appendChild(stop2);
+            gradient.appendChild(stop3);
+            defs.appendChild(gradient);
+            
+            nail.setAttribute('fill', `url(#${gradientId})`);
+            nail.setAttribute('stroke', '#ffd700');
+            nail.setAttribute('stroke-width', '3');
+            
+            // Add premium glow effect
+            nail.style.filter = 'url(#nailShadow) brightness(1.2)';
+        }
+
+        function applyPatternToNail(nail, sticker) {
+            const patternColors = {
+                'diamond': '#e3f2fd',
+                'crown': '#ffd700',
+                'star': '#ffeb3b',
+                'heart': '#e91e63',
+                'rose': '#f8bbd9',
+                'butterfly': '#9c27b0',
+                'lightning': '#ffff00',
+                'fire': '#ff5722',
+                'sparkles': '#ffffff',
+                'gem': '#00bcd4'
+            };
+            
+            const color = { value: patternColors[sticker.pattern] };
+            applyColorToNail(nail, color);
+            
+            // Add special effects for premium patterns
+            if (['sparkles', 'diamond', 'gem'].includes(sticker.pattern)) {
+                nail.style.filter = 'url(#nailShadow) brightness(1.4) contrast(1.2)';
+                nail.style.animation = 'diamondShine 2s ease-in-out infinite';
+            }
+        }
+
+        function createNeonEffect(nail) {
+            const rect = nail.getBoundingClientRect();
+            const container = document.querySelector('.hand-container');
+            
+            for (let i = 0; i < 3; i++) {
+                const neon = document.createElement('div');
+                neon.style.cssText = `
+                    position: absolute;
+                    width: 4px;
+                    height: 4px;
+                    background: radial-gradient(circle, #ffd700, transparent);
+                    border-radius: 50%;
+                    pointer-events: none;
+                    animation: neonFloat 2s ease-out forwards;
+                    left: ${Math.random() * container.offsetWidth}px;
+                    top: ${Math.random() * container.offsetHeight}px;
+                `;
+                container.appendChild(neon);
+                
+                setTimeout(() => {
+                    if (container.contains(neon)) {
+                        container.removeChild(neon);
+                    }
+                }, 2000);
+            }
+            
+            // Add neon animation to CSS
+            if (!document.querySelector('#neonStyle')) {
+                const style = document.createElement('style');
+                style.id = 'neonStyle';
+                style.textContent = `
+                    @keyframes neonFloat {
+                        0% { 
+                            opacity: 1; 
+                            transform: scale(0) translateY(0); 
+                            box-shadow: 0 0 20px #ffd700;
+                        }
+                        100% { 
+                            opacity: 0; 
+                            transform: scale(2) translateY(-60px); 
+                            box-shadow: 0 0 40px #ffd700;
+                        }
+                    }
+                    @keyframes diamondShine {
+                        0%, 100% { 
+                            filter: url(#nailShadow) brightness(1.4) contrast(1.2) hue-rotate(0deg); 
+                        }
+                        50% { 
+                            filter: url(#nailShadow) brightness(1.6) contrast(1.4) hue-rotate(30deg); 
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        }
+
+        function createSparkleEffect(nail) {
+            const rect = nail.getBoundingClientRect();
+            const sparkles = ['✨', '💎', '⭐', '🌟'];
+            
+            for (let i = 0; i < 3; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.innerHTML = sparkles[Math.floor(Math.random() * sparkles.length)];
+                sparkle.style.cssText = `
+                    position: fixed;
+                    left: ${rect.left + rect.width/2}px;
+                    top: ${rect.top + rect.height/2}px;
+                    font-size: 1rem;
+                    pointer-events: none;
+                    z-index: 1000;
+                    animation: sparkleFloat ${1.5 + Math.random()}s ease-out forwards;
+                    animation-delay: ${i * 0.1}s;
+                `;
+                document.body.appendChild(sparkle);
+                
+                setTimeout(() => {
+                    if (document.body.contains(sparkle)) {
+                        document.body.removeChild(sparkle);
+                    }
+                }, 2500);
+            }
+            
+            // Add sparkle animation
+            if (!document.querySelector('#sparkleStyle')) {
+                const style = document.createElement('style');
+                style.id = 'sparkleStyle';
+                style.textContent = `
+                    @keyframes sparkleFloat {
+                        0% { 
+                            opacity: 1; 
+                            transform: scale(0) rotate(0deg) translateY(0); 
+                        }
+                        100% { 
+                            opacity: 0; 
+                            transform: scale(1.2) rotate(360deg) translateY(-50px); 
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        }
+
+        function lightenColor(color, percent) {
+            const num = parseInt(color.replace("#", ""), 16);
+            const amt = Math.round(2.55 * percent);
+            const R = Math.min(255, (num >> 16) + amt);
+            const G = Math.min(255, (num >> 8 & 0x00FF) + amt);
+            const B = Math.min(255, (num & 0x0000FF) + amt);
+            return "#" + ((1 << 24) + (R << 16) + (G << 8) + B).toString(16).slice(1);
+        }
+
+        function darkenColor(color, percent) {
+            const num = parseInt(color.replace("#", ""), 16);
+            const amt = Math.round(2.55 * percent);
+            const R = Math.max(0, (num >> 16) - amt);
+            const G = Math.max(0, (num >> 8 & 0x00FF) - amt);
+            const B = Math.max(0, (num & 0x0000FF) - amt);
+            return "#" + ((1 << 24) + (R << 16) + (G << 8) + B).toString(16).slice(1);
+        }
+
+        function clearCurrentNail() {
+            if (!selectedNail) {
+                showLuxuryAlert('Please select a nail first!', 'warning');
+                return;
+            }
+            
+            // Reset to original style
+            selectedNail.setAttribute('fill', originalNailColors[selectedNail.id]);
+            selectedNail.setAttribute('stroke', '#ffd700');
+            selectedNail.setAttribute('stroke-width', '2');
+            selectedNail.style.filter = 'url(#nailShadow)';
+            selectedNail.style.animation = '';
+            
+            // Remove custom gradients
+            const gradientId = `gradient_${selectedNail.id}`;
+            const existingGradient = document.getElementById(gradientId);
+            if (existingGradient) {
+                existingGradient.remove();
+            }
+            
+            createSparkleEffect(selectedNail);
+            showLuxuryAlert('Nail cleared! ✨', 'success');
+        }
+
+        function clearAllNails() {
+            document.querySelectorAll('.nail').forEach(nail => {
+                nail.setAttribute('fill', originalNailColors[nail.id]);
+                nail.setAttribute('stroke', '#ffd700');
+                nail.setAttribute('stroke-width', '2');
+                nail.style.filter = 'url(#nailShadow)';
+                nail.style.animation = '';
+                nail.classList.remove('selected');
+                
+                // Remove custom gradients
+                const gradientId = `gradient_${nail.id}`;
+                const existingGradient = document.getElementById(gradientId);
+                if (existingGradient) {
+                    existingGradient.remove();
+                }
+            });
+            
+            // Reset selections
+            selectedNail = null;
+            selectedColor = null;
+            selectedSticker = null;
+            
+            // Clear UI selections
+            document.querySelectorAll('.color-swatch, .sticker-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            
+            // Hide info panel
+            document.getElementById('selectedInfo').style.display = 'none';
+            
+            createLuxuryConfetti();
+            showLuxuryAlert('All nails reset! Ready for new design 🎨', 'success');
+        }
+
+        function saveDesign() {
+            const svg = document.querySelector('.hand-svg');
+            const canvas = document.createElement('canvas');
+            canvas.width = 800;
+            canvas.height = 600;
+            const ctx = canvas.getContext('2d');
+            
+            // Create luxury background
+            const bgGradient = ctx.createRadialGradient(400, 300, 0, 400, 300, 400);
+            bgGradient.addColorStop(0, '#1a1a1a');
+            bgGradient.addColorStop(1, '#000000');
+            ctx.fillStyle = bgGradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Add gold border
+            ctx.strokeStyle = '#ffd700';
+            ctx.lineWidth = 6;
+            ctx.strokeRect(15, 15, canvas.width - 30, canvas.height - 30);
+            
+            // Add title with luxury styling
+            ctx.fillStyle = '#ffd700';
+            ctx.font = 'bold 36px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('💎 LUXURY NAIL DESIGN 💎', canvas.width / 2, 70);
+            
+            ctx.font = '18px Arial';
+            ctx.fillText('Created with Nail Studio Luxe', canvas.width / 2, 100);
+            
+            // Convert and draw SVG
+            const svgData = new XMLSerializer().serializeToString(svg);
+            const svgBlob = new Blob([svgData], {type: 'image/svg+xml;charset=utf-8'});
+            const url = URL.createObjectURL(svgBlob);
+            
+            const img = new Image();
+            img.onload = function() {
+                ctx.drawImage(img, (canvas.width - 500) / 2, 150, 500, 300);
+                
+                // Add luxury timestamp
+                ctx.fillStyle = 'rgba(255, 215, 0, 0.8)';
+                ctx.font = '16px Arial';
+                ctx.fillText(`Exclusive Design - ${new Date().toLocaleDateString()}`, canvas.width / 2, canvas.height - 30);
+                
+                // Download
+                const link = document.createElement('a');
+                link.download = `luxury-nail-design-${Date.now()}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+                
+                URL.revokeObjectURL(url);
+                showLuxuryAlert('Premium design saved! 🏆', 'success');
+            };
+            img.src = url;
+        }
+
+        function createLuxuryConfetti() {
+            const confettiColors = ['#ffd700', '#ff6b6b', '#00ffff', '#ff1493', '#00ff00'];
+            const confettiShapes = ['💎', '✨', '🌟', '👑', '💖'];
+            
+            for (let i = 0; i < 20; i++) {
+                const confetti = document.createElement('div');
+                confetti.innerHTML = Math.random() > 0.5 ? confettiShapes[Math.floor(Math.random() * confettiShapes.length)] : '●';
+                confetti.style.cssText = `
+                    position: fixed;
+                    left: ${Math.random() * 100}%;
+                    top: -20px;
+                    font-size: ${Math.random() * 15 + 10}px;
+                    color: ${confettiColors[Math.floor(Math.random() * confettiColors.length)]};
+                    pointer-events: none;
+                    z-index: 1000;
+                    animation: luxuryConfetti ${Math.random() * 2 + 2}s linear forwards;
+                    text-shadow: 0 0 10px currentColor;
+                `;
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => {
+                    if (document.body.contains(confetti)) {
+                        document.body.removeChild(confetti);
+                    }
+                }, 4000);
+            }
+            
+            if (!document.querySelector('#confettiStyle')) {
+                const style = document.createElement('style');
+                style.id = 'confettiStyle';
+                style.textContent = `
+                    @keyframes luxuryConfetti {
+                        0% { 
+                            transform: translateY(-20px) rotate(0deg); 
+                            opacity: 1; 
+                        }
+                        100% { 
+                            transform: translateY(100vh) rotate(720deg); 
+                            opacity: 0; 
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+        }
+
+        function showLuxuryAlert(message, type) {
+            const alert = document.createElement('div');
+            const bgColor = type === 'success' ? 'linear-gradient(45deg, #00ff00, #32cd32)' : 'linear-gradient(45deg, #ff6b6b, #ff4444)';
+            
+            alert.style.cssText = `
+                position: fixed;
+                top: 15px;
+                right: 15px;
+                background: ${bgColor};
+                color: #000;
+                padding: 12px 20px;
+                border-radius: 8px;
+                border: 2px solid #ffd700;
+                box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+                z-index: 1000;
+                font-weight: bold;
+                font-size: 0.9rem;
+                animation: luxurySlide 0.5s ease-out;
+                text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            `;
+            alert.textContent = message;
+            
+            if (!document.querySelector('#alertStyle')) {
+                const style = document.createElement('style');
+                style.id = 'alertStyle';
+                style.textContent = `
+                    @keyframes luxurySlide {
+                        from { 
+                            transform: translateX(100%) scale(0.8); 
+                            opacity: 0; 
+                        }
+                        to { 
+                            transform: translateX(0) scale(1); 
+                            opacity: 1; 
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            document.body.appendChild(alert);
+            
+            setTimeout(() => {
+                alert.style.animation = 'luxurySlide 0.5s ease-out reverse';
+                setTimeout(() => {
+                    if (document.body.contains(alert)) {
+                        document.body.removeChild(alert);
+                    }
+                }, 500);
+            }, 2500);
+        }
+
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', initializeApp);
+    </script>
+</body>
+</html>
